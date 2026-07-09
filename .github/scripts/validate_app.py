@@ -23,16 +23,16 @@ warnings = []
 
 def error(msg):
     errors.append(msg)
-    print(f"  ❌ {msg}")
+    print(f"  [ERROR] {msg}")
 
 
 def warn(msg):
     warnings.append(msg)
-    print(f"  ⚠️  {msg}")
+    print(f"  [WARN] {msg}")
 
 
 def ok(msg):
-    print(f"  ✅ {msg}")
+    print(f"  [OK] {msg}")
 
 
 # ── Required DocType fields ──────────────────────────────────
@@ -58,9 +58,13 @@ def check_doctype(json_path: str, data: dict):
         error(f"{name}: DocType has no fields defined")
     else:
         for i, f in enumerate(fields):
+            # Layout fields (Column Break, Section Break, Tab Break) don't need labels
+            skip_label = f.get("fieldtype") in ("Column Break", "Section Break", "Tab Break")
             for key in REQUIRED_FIELD_KEYS:
+                if key == "label" and skip_label:
+                    continue
                 if key not in f:
-                    error(f"{name}: field #{i} missing '{key}'")
+                    error(f"{name}: field #{i} ('{f.get('fieldname', '?')}') missing '{key}'")
 
     permissions = data.get("permissions", [])
     if not permissions:
@@ -145,7 +149,7 @@ def validate_json_file(filepath: str):
 
 def validate_directory_structure():
     """Check that the Frappe app directory structure is correct."""
-    print("\n📁 Checking directory structure...")
+    print("\n--- Checking directory structure...")
 
     mandatory_dirs = [
         "kirana_ledger/doctype",
@@ -187,7 +191,7 @@ def validate_fixtures():
     if not os.path.isdir(fixtures_dir):
         return
 
-    print("\n📦 Checking fixtures...")
+    print("\n--- Checking fixtures...")
 
     # Collect known DocTypes from the doctype directory
     doctype_dir = os.path.join(ROOT, "kirana_ledger/doctype")
@@ -198,7 +202,7 @@ def validate_fixtures():
             if os.path.isdir(dt_path):
                 json_file = os.path.join(dt_path, f"{dt}.json")
                 if os.path.exists(json_file):
-                    with open(json_file) as f:
+                    with open(json_file, encoding="utf-8") as f:
                         data = json.load(f)
                         known_doctypes.add(data.get("name", dt))
                 known_doctypes.add(dt.replace("_", " ").title())
@@ -208,7 +212,7 @@ def validate_fixtures():
             continue
         fpath = os.path.join(fixtures_dir, fname)
         try:
-            with open(fpath) as f:
+            with open(fpath, encoding="utf-8") as f:
                 records = json.load(f)
         except json.JSONDecodeError:
             error(f"fixtures/{fname}: invalid JSON")
@@ -230,7 +234,7 @@ def validate_fixtures():
 
 def validate_hooks():
     """Check that hooks.py is syntactically valid."""
-    print("\n🔌 Checking hooks.py...")
+    print("\n--- Checking hooks.py...")
     hooks_path = os.path.join(ROOT, "kirana_ledger/hooks.py")
     if not os.path.exists(hooks_path):
         error("kirana_ledger/hooks.py not found")
@@ -252,7 +256,7 @@ def main():
     validate_hooks()
 
     # Walk all JSON files
-    print("\n📄 Checking JSON files...")
+    print("\n--- Checking JSON files...")
     json_count = 0
     for root, dirs, files in os.walk(ROOT):
         # Skip .git directory
@@ -271,17 +275,17 @@ def main():
     print(f"\n{'=' * 50}")
     print(f"  Summary: {json_count} JSON files checked")
     if errors:
-        print(f"  ❌ {len(errors)} errors found:")
+        print(f"  [ERROR] {len(errors)} errors found:")
         for e in errors:
-            print(f"     • {e}")
+            print(f"    - {e}")
     if warnings:
-        print(f"  ⚠️  {len(warnings)} warnings:")
+        print(f"  [WARN] {len(warnings)} warnings:")
         for w in warnings:
-            print(f"     • {w}")
+            print(f"    - {w}")
     if not errors and not warnings:
-        print("  ✅ All checks passed — app structure looks good!")
+        print("  [OK] All checks passed - app structure looks good!")
     elif not errors:
-        print("  ⚠️  No errors, but review warnings above")
+        print("  [WARN] No errors, but review warnings above")
     print(f"{'=' * 50}")
 
     return 1 if errors else 0
