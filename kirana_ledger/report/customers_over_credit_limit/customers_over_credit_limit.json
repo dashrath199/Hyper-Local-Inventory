@@ -1,0 +1,13 @@
+{
+ "doctype": "Report",
+ "name": "Customers Over Credit Limit",
+ "report_name": "Customers Over Credit Limit",
+ "report_type": "Query Report",
+ "query": "SELECT\n    c.name as \"Customer:Link/Udhaar Customer:180\",\n    c.customer_name as \"Customer Name::200\",\n    c.phone as \"Phone::140\",\n    c.current_balance as \"Balance:Currency:120\",\n    c.credit_limit as \"Credit Limit:Currency:120\",\n    (c.current_balance - c.credit_limit) as \"Excess:Currency:120\",\n    c.last_payment_date as \"Last Payment:Date:110\",\n    c.preferred_language as \"Language::100\"\nFROM\n    `tabUdhaar Customer` c\nWHERE\n    c.credit_limit > 0\n    AND c.current_balance > c.credit_limit\nORDER BY\n    (c.current_balance - c.credit_limit) DESC",
+ "ref_doctype": "Udhaar Customer",
+ "filters": [],
+ "roles": [
+  {"role": "Shop Owner"},
+  {"role": "System Manager"}
+ ]
+}

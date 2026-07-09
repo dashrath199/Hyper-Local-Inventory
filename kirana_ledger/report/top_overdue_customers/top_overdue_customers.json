@@ -1,0 +1,13 @@
+{
+ "doctype": "Report",
+ "name": "Top Overdue Customers",
+ "report_name": "Top Overdue Customers",
+ "report_type": "Query Report",
+ "query": "SELECT\n    c.name as \"Customer:Link/Udhaar Customer:180\",\n    c.customer_name as \"Customer Name::200\",\n    c.phone as \"Phone::140\",\n    c.current_balance as \"Balance:Currency:120\",\n    c.credit_limit as \"Credit Limit:Currency:120\",\n    DATEDIFF(CURDATE(), c.last_payment_date) as \"Days Since Payment:Int:110\",\n    c.preferred_language as \"Language::100\"\nFROM\n    `tabUdhaar Customer` c\nWHERE\n    c.current_balance > 0\nORDER BY\n    c.current_balance DESC",
+ "ref_doctype": "Udhaar Customer",
+ "filters": [],
+ "roles": [
+  {"role": "Shop Owner"},
+  {"role": "System Manager"}
+ ]
+}

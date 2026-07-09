@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.current_balance > doc.credit_limit and doc.credit_limit > 0",
+ "date_changed": "modified",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Udhaar Customer",
+ "enabled": 1,
+ "event": "Value Change",
+ "is_standard": 1,
+ "message": "<p>{{ doc.customer_name }}'s outstanding balance (₹{{ frappe.utils.fmt_money(doc.current_balance) }}) exceeds their credit limit (₹{{ frappe.utils.fmt_money(doc.credit_limit) }}).</p>",
+ "method": "",
+ "modified": "2026-07-09 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Kirana Ledger",
+ "name": "Credit Limit Breach",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "Shop Owner"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "",
+ "sender_email": "",
+ "subject": "⚠️ Credit Limit Breach: {{ doc.customer_name }}",
+ "value_changed": "current_balance"
+}

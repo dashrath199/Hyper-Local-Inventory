@@ -1,0 +1,7 @@
+__version__ = "1.0.0"
+app_name = "kirana_ledger"
+app_title = "Kirana Ledger"
+app_publisher = "Kirana Tech"
+app_description = "Hyper-Local Inventory + Udhaar (Credit) Ledger for Kirana Shops — ERPNext v15 Custom App"
+app_email = "dev@kirana-ledger.example.com"
+app_license = "MIT"

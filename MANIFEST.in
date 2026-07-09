@@ -1,0 +1,15 @@
+include *.txt
+include *.md
+include *.json
+recursive-include kirana_ledger *.py
+recursive-include kirana_ledger *.json
+recursive-include kirana_ledger *.css
+recursive-include kirana_ledger *.js
+recursive-include kirana_ledger *.html
+recursive-include kirana_ledger *.md
+recursive-include kirana_ledger *.txt
+recursive-include kirana_ledger *.svg
+recursive-include kirana_ledger *.png
+recursive-include kirana_ledger *.jpg
+graft kirana_ledger
+prune .git

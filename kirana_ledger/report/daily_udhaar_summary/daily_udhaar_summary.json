@@ -1,0 +1,28 @@
+{
+ "doctype": "Report",
+ "name": "Daily Udhaar Summary",
+ "report_name": "Daily Udhaar Summary",
+ "report_type": "Query Report",
+ "query": "SELECT\n    DATE(ue.date) as \"Date:Date:120\",\n    ue.entry_type as \"Entry Type::150\",\n    COUNT(ue.name) as \"Transactions:Int:80\",\n    SUM(ue.amount) as \"Total Amount:Currency:120\"\nFROM\n    `tabUdhaar Entry` ue\nWHERE\n    ue.docstatus = 1\n    AND ue.date BETWEEN %(from_date)s AND %(to_date)s\nGROUP BY\n    DATE(ue.date),\n    ue.entry_type\nORDER BY\n    DATE(ue.date) DESC",
+ "ref_doctype": "Udhaar Entry",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "default": "Today"
+  }
+ ],
+ "roles": [
+  {"role": "Shop Owner"},
+  {"role": "System Manager"}
+ ]
+}

@@ -1,0 +1,161 @@
+[
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Ramesh Kumar",
+    "customer_name": "Ramesh Kumar",
+    "phone": "9876543210",
+    "preferred_language": "Hindi",
+    "credit_limit": 5000,
+    "current_balance": 3200
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Suresh Patel",
+    "customer_name": "Suresh Patel",
+    "phone": "9876543211",
+    "preferred_language": "Hindi",
+    "credit_limit": 3000,
+    "current_balance": 2800
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Mohan Singh",
+    "customer_name": "Mohan Singh",
+    "phone": "9876543212",
+    "preferred_language": "Punjabi",
+    "credit_limit": 2000,
+    "current_balance": 500
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Lakshmi Narayanan",
+    "customer_name": "Lakshmi Narayanan",
+    "phone": "9876543213",
+    "preferred_language": "Tamil",
+    "credit_limit": 4000,
+    "current_balance": 1500
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Venkatesh Rao",
+    "customer_name": "Venkatesh Rao",
+    "phone": "9876543214",
+    "preferred_language": "Telugu",
+    "credit_limit": 6000,
+    "current_balance": 6100
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Fathima Beevi",
+    "customer_name": "Fathima Beevi",
+    "phone": "9876543215",
+    "preferred_language": "Malayalam",
+    "credit_limit": 3000,
+    "current_balance": 2500
+  },
+  {
+    "doctype": "Udhaar Customer",
+    "name": "Krishna Murthy",
+    "customer_name": "Krishna Murthy",
+    "phone": "9876543216",
+    "preferred_language": "Kannada",
+    "credit_limit": 3500,
+    "current_balance": 3400
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Ramesh Kumar",
+    "customer_name": "Ramesh Kumar",
+    "entry_type": "Credit Given",
+    "amount": 500,
+    "date": "2026-07-01",
+    "items_description": "चीनी, चाय पत्ती, दूध",
+    "balance_after": 3200,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Ramesh Kumar",
+    "customer_name": "Ramesh Kumar",
+    "entry_type": "Payment Received",
+    "amount": 1000,
+    "date": "2026-07-05",
+    "items_description": "पुराना बकाया चुकाया",
+    "balance_after": 2200,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Ramesh Kumar",
+    "customer_name": "Ramesh Kumar",
+    "entry_type": "Credit Given",
+    "amount": 1000,
+    "date": "2026-07-08",
+    "items_description": "चावल, दाल, तेल",
+    "balance_after": 3200,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Suresh Patel",
+    "customer_name": "Suresh Patel",
+    "entry_type": "Credit Given",
+    "amount": 800,
+    "date": "2026-07-02",
+    "items_description": "आटा, चीनी, नमक",
+    "balance_after": 2800,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Venkatesh Rao",
+    "customer_name": "Venkatesh Rao",
+    "entry_type": "Credit Given",
+    "amount": 500,
+    "date": "2026-07-07",
+    "items_description": "Rice, dal, cooking oil",
+    "balance_after": 6100,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Udhaar Entry",
+    "customer": "Fathima Beevi",
+    "customer_name": "Fathima Beevi",
+    "entry_type": "Credit Given",
+    "amount": 300,
+    "date": "2026-07-09",
+    "items_description": "പാൽ, ബിസ്കറ്റ്, സോപ്പ്",
+    "balance_after": 2500,
+    "docstatus": 1
+  },
+  {
+    "doctype": "Quick Inventory Item",
+    "item_name": "Royal Basmati Rice (1kg)",
+    "current_stock_estimate": 12,
+    "reorder_flag": 0
+  },
+  {
+    "doctype": "Quick Inventory Item",
+    "item_name": "Fortune Refined Oil (1L)",
+    "current_stock_estimate": 8,
+    "reorder_flag": 0
+  },
+  {
+    "doctype": "Quick Inventory Item",
+    "item_name": "Tata Salt (1kg)",
+    "current_stock_estimate": 3,
+    "reorder_flag": 1
+  },
+  {
+    "doctype": "Quick Inventory Item",
+    "item_name": "Surf Excel Detergent (500g)",
+    "current_stock_estimate": 5,
+    "reorder_flag": 0
+  },
+  {
+    "doctype": "Quick Inventory Item",
+    "item_name": "Parle-G Biscuits (200g)",
+    "current_stock_estimate": 0,
+    "reorder_flag": 1
+  }
+]
