@@ -6,6 +6,7 @@
 *An ERPNext v15 Custom App — Portfolio / Demo*
 
 [![ERPNext v15](https://img.shields.io/badge/ERPNext-v15-%2328a745?style=flat-square&logo=erpnext)](https://erpnext.com)
+[![CI](https://img.shields.io/github/actions/workflow/status/dashrath199/Hyper-Local-Inventory/ci.yml?style=flat-square&label=CI&logo=githubactions)](https://github.com/dashrath199/Hyper-Local-Inventory/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)]()

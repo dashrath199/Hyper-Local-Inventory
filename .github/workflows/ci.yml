@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install validation dependencies
+        run: pip install pyyaml
+
+      - name: Validate Frappe app structure
+        run: python .github/scripts/validate_app.py
+
+      - name: Check Python syntax
+        run: |
+          echo "Checking Python syntax..."
+          find . -name "*.py" -not -path "./.git/*" -exec python -m py_compile {} \;
+          echo "✅ All Python files compile successfully"
+
+      - name: Validate all JSON files
+        run: |
+          echo "Checking JSON syntax..."
+          find . -name "*.json" -not -path "./.git/*" -exec sh -c '
+            python -c "
+import json, sys
+try:
+    with open(\"$1\") as f:
+        json.load(f)
+except json.JSONDecodeError as e:
+    print(f\"❌ Invalid JSON in $1: {e}\")
+    sys.exit(1)
+" "" {} \;
+          echo "✅ All JSON files are valid"
+
+      - name: Check mandatory files exist
+        run: |
+          missing=0
+          for file in \
+            "setup.py" \
+            "setup.cfg" \
+            "requirements.txt" \
+            "MANIFEST.in" \
+            "license.txt" \
+            "README.md" \
+            ".gitignore" \
+            "kirana_ledger/__init__.py" \
+            "kirana_ledger/hooks.py" \
+            "kirana_ledger/api.py"
+          do
+            if [ ! -f "$file" ]; then
+              echo "❌ Mandatory file missing: $file"
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then exit 1; fi
+          echo "✅ All mandatory files present"
