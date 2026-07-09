@@ -23,32 +23,57 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
 
-      - name: Install validation dependencies
-        run: pip install pyyaml
-
-      - name: Validate Frappe app structure
-        run: python .github/scripts/validate_app.py
-
-      - name: Check Python syntax
+      - name: Validate Frappe app structure + JSON + Python
         run: |
-          echo "Checking Python syntax..."
-          find . -name "*.py" -not -path "./.git/*" -exec python -m py_compile {} \;
-          echo "✅ All Python files compile successfully"
+          echo "=== Running app structure validation ==="
+          python .github/scripts/validate_app.py
 
-      - name: Validate all JSON files
-        run: |
-          echo "Checking JSON syntax..."
-          find . -name "*.json" -not -path "./.git/*" -exec sh -c '
-            python -c "
-import json, sys
-try:
-    with open(\"$1\") as f:
-        json.load(f)
-except json.JSONDecodeError as e:
-    print(f\"❌ Invalid JSON in $1: {e}\")
+          echo ""
+          echo "=== Checking Python syntax (all .py files) ==="
+          python -c "
+import os, sys
+errors = 0
+for root, dirs, files in os.walk('.'):
+    if '.git' in root:
+        continue
+    for f in files:
+        if not f.endswith('.py'):
+            continue
+        path = os.path.join(root, f)
+        try:
+            compile(open(path, encoding='utf-8').read(), path, 'exec')
+        except SyntaxError as e:
+            print(f'❌ {path}: {e}')
+            errors += 1
+if errors:
+    print(f'Found {errors} file(s) with syntax errors')
     sys.exit(1)
-" "" {} \;
-          echo "✅ All JSON files are valid"
+print('✅ All Python files compile successfully')
+"
+
+          echo ""
+          echo "=== Validating all JSON files ==="
+          python -c "
+import json, os, sys
+errors = 0
+for root, dirs, files in os.walk('.'):
+    if '.git' in root:
+        continue
+    for f in files:
+        if not f.endswith('.json'):
+            continue
+        path = os.path.join(root, f)
+        try:
+            with open(path, encoding='utf-8') as fh:
+                json.load(fh)
+        except json.JSONDecodeError as e:
+            print(f'❌ {path}: {e}')
+            errors += 1
+if errors:
+    print(f'Found {errors} file(s) with invalid JSON')
+    sys.exit(1)
+print('✅ All JSON files are valid')
+"
 
       - name: Check mandatory files exist
         run: |

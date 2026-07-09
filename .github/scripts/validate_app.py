@@ -126,15 +126,17 @@ def validate_json_file(filepath: str):
         return
 
     # Determine type from directory structure
-    parent_dir = os.path.basename(os.path.dirname(filepath))
+    # For a file at .../doctype/udhaar_customer/udhaar_customer.json,
+    # the grandparent directory is "doctype", the parent is "udhaar_customer".
+    grandparent = os.path.basename(os.path.dirname(os.path.dirname(filepath)))
 
-    if parent_dir.startswith("doctype"):
+    if grandparent == "doctype":
         check_doctype(filepath, data)
-    elif parent_dir == "report":
+    elif grandparent == "report":
         check_report(filepath, data)
-    elif parent_dir == "workspace":
+    elif grandparent == "workspace":
         check_workspace(filepath, data)
-    elif parent_dir == "notification":
+    elif grandparent == "notification":
         check_notification(filepath, data)
     else:
         # Generic JSON — just validate it parses
