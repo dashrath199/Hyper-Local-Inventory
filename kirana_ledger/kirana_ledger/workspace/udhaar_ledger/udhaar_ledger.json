@@ -1,23 +1,28 @@
 {
- "charts": [],
- "content": "[{\"id\": \"IQMq4e5Z-6\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Total Outstanding Udhaar\", \"label\": \"Total Outstanding Udhaar\", \"document_type\": \"Udhaar Customer\", \"function\": \"Sum\", \"aggregate_function_based_on\": \"current_balance\", \"color\": \"#059669\", \"filters_json\": \"[]\"}}, {\"id\": \"z9Mp7f3A-2\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Customers Over Limit\", \"label\": \"Customers Over Limit\", \"document_type\": \"Udhaar Customer\", \"function\": \"Count\", \"aggregate_function_based_on\": \"name\", \"color\": \"#dc2626\", \"filters_json\": \"[[\\\"Udhaar Customer\\\",\\\"credit_limit\\\",\\\">\\\",0,\\\"and\\\",\\\"Udhaar Customer\\\",\\\"current_balance\\\",\\\">\\\",\\\"credit_limit\\\",]]\"}}, {\"id\": \"Xr1N2d8P-3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Udhaar Entry\", \"label\": \"New Udhaar Entry\", \"type\": \"DocType\", \"doc_type\": \"Udhaar Entry\", \"link_to\": \"Udhaar Entry\", \"icon\": \"money-coins\", \"format\": \"Standard\", \"color\": \"#059669\"}}, {\"id\": \"Yt5K9s7L-4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"All Customers\", \"label\": \"All Customers\", \"type\": \"DocType\", \"doc_type\": \"Udhaar Customer\", \"link_to\": \"Udhaar Customer\", \"icon\": \"people\", \"format\": \"Standard\", \"color\": \"#2563eb\"}}, {\"id\": \"Vb8N4m1X-5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Daily Summary Report\", \"label\": \"Daily Udhaar Summary\", \"type\": \"Report\", \"doc_type\": \"Daily Udhaar Summary\", \"link_to\": \"Daily Udhaar Summary\", \"icon\": \"chart\", \"format\": \"Standard\", \"color\": \"#d97706\"}}, {\"id\": \"Kj5H8t2R-6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Over Limit Report\", \"label\": \"Customers Over Limit\", \"type\": \"Report\", \"doc_type\": \"Customers Over Credit Limit\", \"link_to\": \"Customers Over Credit Limit\", \"icon\": \"alert\", \"format\": \"Standard\", \"color\": \"#dc2626\"}}]",
- "creation": "2026-07-09 12:00:00.000000",
  "doctype": "Workspace",
- "for_user": "",
- "hide_custom": 0,
- "icon": "money-coins",
- "indicator_color": "green",
  "is_hidden": 0,
  "label": "Udhaar Ledger",
- "links": [],
- "modified": "2026-07-09 12:00:00.000000",
- "modified_by": "Administrator",
  "module": "Kirana Ledger",
  "name": "Udhaar Ledger",
  "owner": "Administrator",
- "parent_page": "",
  "public": 1,
- "roles": [],
- "sequence_id": 1,
- "title": "Udhaar Ledger"
+ "sequence_id": 1.0,
+ "title": "Udhaar Ledger",
+ "icon": "money-coins",
+ "indicator_color": "green",
+ "content": "[{\"id\": \"hdr_1\", \"type\": \"header\", \"data\": {\"text\": \"Udhaar Ledger\", \"col\": 12}}, {\"id\": \"card_1\", \"type\": \"card\", \"data\": {\"card_name\": \"Customers & Entries\", \"links\": [{\"type\": \"link\", \"label\": \"Udhaar Customer\", \"link_to\": \"Udhaar Customer\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Udhaar Entry\", \"link_to\": \"Udhaar Entry\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Quick Inventory Item\", \"link_to\": \"Quick Inventory Item\", \"link_type\": \"DocType\"}]}}, {\"id\": \"card_2\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"links\": [{\"type\": \"link\", \"label\": \"Daily Udhaar Summary\", \"link_to\": \"Daily Udhaar Summary\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Top Overdue Customers\", \"link_to\": \"Top Overdue Customers\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Customers Over Credit Limit\", \"link_to\": \"Customers Over Credit Limit\", \"link_type\": \"Report\"}]}}]",
+ "links": [
+  {"dependencies": "", "hidden": 0, "is_query_report": 0, "label": "Customers & Entries", "link_count": 0, "link_to": "", "link_type": "", "onboard": 0, "type": "Card Break"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 0, "label": "Udhaar Customer", "link_count": 0, "link_to": "Udhaar Customer", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 0, "label": "Udhaar Entry", "link_count": 0, "link_to": "Udhaar Entry", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 0, "label": "Quick Inventory Item", "link_count": 0, "link_to": "Quick Inventory Item", "link_type": "DocType", "onboard": 0, "type": "Link"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 0, "label": "Reports", "link_count": 0, "link_to": "", "link_type": "", "onboard": 0, "type": "Card Break"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 1, "label": "Daily Udhaar Summary", "link_count": 0, "link_to": "Daily Udhaar Summary", "link_type": "Report", "onboard": 0, "type": "Link"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 1, "label": "Top Overdue Customers", "link_count": 0, "link_to": "Top Overdue Customers", "link_type": "Report", "onboard": 0, "type": "Link"},
+  {"dependencies": "", "hidden": 0, "is_query_report": 1, "label": "Customers Over Credit Limit", "link_count": 0, "link_to": "Customers Over Credit Limit", "link_type": "Report", "onboard": 0, "type": "Link"}
+ ],
+ "shortcuts": [
+  {"color": "Green", "doc_view": "", "format": "", "label": "New Udhaar Entry", "link_to": "Udhaar Entry", "stats_filter": "{}", "type": "DocType"},
+  {"color": "Blue", "doc_view": "", "format": "", "label": "All Customers", "link_to": "Udhaar Customer", "stats_filter": "{}", "type": "DocType"}
+ ]
 }
