@@ -18,7 +18,7 @@ fixtures = [
 # ─── Doc Events (server-side hooks) ────────────────────────────
 doc_events = {
     "Udhaar Entry": {
-        "on_update": "kirana_ledger.kirana_ledger.api.check_credit_limit",
+        "on_update": "kirana_ledger.api.check_credit_limit",
     }
 }
 

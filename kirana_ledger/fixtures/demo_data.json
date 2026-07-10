@@ -71,7 +71,8 @@
     "date": "2026-07-01",
     "items_description": "चीनी, चाय पत्ती, दूध",
     "balance_after": 3200,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0001"
   },
   {
     "doctype": "Udhaar Entry",
@@ -82,7 +83,8 @@
     "date": "2026-07-05",
     "items_description": "पुराना बकाया चुकाया",
     "balance_after": 2200,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0002"
   },
   {
     "doctype": "Udhaar Entry",
@@ -93,7 +95,8 @@
     "date": "2026-07-08",
     "items_description": "चावल, दाल, तेल",
     "balance_after": 3200,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0003"
   },
   {
     "doctype": "Udhaar Entry",
@@ -104,7 +107,8 @@
     "date": "2026-07-02",
     "items_description": "आटा, चीनी, नमक",
     "balance_after": 2800,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0004"
   },
   {
     "doctype": "Udhaar Entry",
@@ -115,7 +119,8 @@
     "date": "2026-07-07",
     "items_description": "Rice, dal, cooking oil",
     "balance_after": 6100,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0005"
   },
   {
     "doctype": "Udhaar Entry",
@@ -126,36 +131,42 @@
     "date": "2026-07-09",
     "items_description": "പാൽ, ബിസ്കറ്റ്, സോപ്പ്",
     "balance_after": 2500,
-    "docstatus": 1
+    "docstatus": 1,
+    "name": "UD-2026-0006"
   },
   {
     "doctype": "Quick Inventory Item",
     "item_name": "Royal Basmati Rice (1kg)",
     "current_stock_estimate": 12,
-    "reorder_flag": 0
+    "reorder_flag": 0,
+    "name": "Royal Basmati Rice (1kg)"
   },
   {
     "doctype": "Quick Inventory Item",
     "item_name": "Fortune Refined Oil (1L)",
     "current_stock_estimate": 8,
-    "reorder_flag": 0
+    "reorder_flag": 0,
+    "name": "Fortune Refined Oil (1L)"
   },
   {
     "doctype": "Quick Inventory Item",
     "item_name": "Tata Salt (1kg)",
     "current_stock_estimate": 3,
-    "reorder_flag": 1
+    "reorder_flag": 1,
+    "name": "Tata Salt (1kg)"
   },
   {
     "doctype": "Quick Inventory Item",
     "item_name": "Surf Excel Detergent (500g)",
     "current_stock_estimate": 5,
-    "reorder_flag": 0
+    "reorder_flag": 0,
+    "name": "Surf Excel Detergent (500g)"
   },
   {
     "doctype": "Quick Inventory Item",
     "item_name": "Parle-G Biscuits (200g)",
     "current_stock_estimate": 0,
-    "reorder_flag": 1
+    "reorder_flag": 1,
+    "name": "Parle-G Biscuits (200g)"
   }
 ]
