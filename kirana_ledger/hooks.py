@@ -13,6 +13,7 @@ fixtures = [
     {"dt": "Udhaar Entry", "filters": []},
     {"dt": "Quick Inventory Item", "filters": []},
     {"dt": "Workspace", "filters": [["module", "=", "Kirana Ledger"]]},
+    {"dt": "Role", "filters": [["role_name", "=", "Shop Owner"]]},
 ]
 
 # ─── Doc Events (server-side hooks) ────────────────────────────

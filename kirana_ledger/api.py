@@ -114,27 +114,36 @@ def check_credit_limit(doc, method=None):
     """Check if a Udhaar Entry pushes the customer over their credit limit.
 
     Triggered by doc_events in hooks.py:
-        "Udhaar Entry": {"on_update": "kirana_ledger.kirana_ledger.api.check_credit_limit"}
+        "Udhaar Entry": {"on_update": "kirana_ledger.api.check_credit_limit"}
 
-    Creates a system notification to alert the shop owner.
+    Creates a system notification for every user holding the Shop Owner role.
     """
     if not doc or not doc.customer:
         return
 
     customer = frappe.get_doc("Udhaar Customer", doc.customer)
     if customer.credit_limit and customer.current_balance > customer.credit_limit:
-        notification = frappe.get_doc({
-            "doctype": "Notification Log",
-            "subject": _("⚠️ Credit Limit Breach: {0}").format(customer.customer_name),
-            "email_content": _(
-                "{0}'s outstanding balance (₹{1:,.0f}) exceeds their credit limit (₹{2:,.0f})."
-            ).format(customer.customer_name, customer.current_balance, customer.credit_limit),
-            "document_type": "Udhaar Customer",
-            "document_name": customer.name,
-            "from_user": "Administrator",
-            "type": "Alert",
-        })
-        notification.insert(ignore_permissions=True)
+        shop_owners = frappe.get_all(
+            "Has Role",
+            filters={"role": "Shop Owner", "parenttype": "User"},
+            fields=["parent"],
+        )
+        recipients = [row.parent for row in shop_owners] or ["Administrator"]
+
+        for user in recipients:
+            notification = frappe.get_doc({
+                "doctype": "Notification Log",
+                "subject": _("⚠️ Credit Limit Breach: {0}").format(customer.customer_name),
+                "email_content": _(
+                    "{0}'s outstanding balance (₹{1:,.0f}) exceeds their credit limit (₹{2:,.0f})."
+                ).format(customer.customer_name, customer.current_balance, customer.credit_limit),
+                "document_type": "Udhaar Customer",
+                "document_name": customer.name,
+                "for_user": user,
+                "from_user": "Administrator",
+                "type": "Alert",
+            })
+            notification.insert(ignore_permissions=True)
 
 
 def _extract_message_text(payload: dict) -> str | None:
